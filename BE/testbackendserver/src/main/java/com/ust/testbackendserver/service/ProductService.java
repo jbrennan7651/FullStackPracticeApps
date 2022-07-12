@@ -1,9 +1,7 @@
 package com.ust.testbackendserver.service;
 
-
-import com.ust.testbackendserver.dao.ProductDao;
 import com.ust.testbackendserver.model.Product;
-
+import com.ust.testbackendserver.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

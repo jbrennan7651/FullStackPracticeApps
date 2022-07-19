@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { LoginService } from '../services/login.service';
@@ -12,8 +12,9 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    uname: new FormControl(''),
-    password: new FormControl('')
+    uname: new FormControl('', [Validators.required,Validators.minLength(5)]),
+    password: new FormControl('', [Validators.required,
+                                    Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&]).{6,20}$")])
   });
 
   user: User = new User;

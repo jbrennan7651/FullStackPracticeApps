@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { MainGuiComponent } from './components/main-gui/main-gui.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { MainGuiComponent } from './components/main-gui/main-gui.component';
     AppComponent,
     LoginComponent,
     CreateUserComponent,
-    MainGuiComponent
+    MainGuiComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import { MainGuiComponent } from './components/main-gui/main-gui.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

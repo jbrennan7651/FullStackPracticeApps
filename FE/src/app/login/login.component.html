@@ -1,14 +1,19 @@
-<div class="container col-md-4">
+<div class="container col-md-6">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group col-10">
+        <div class="form-group col-6">
             <label class="form-label">Username</label>
             <br>
             <input [(ngModel)]="user.uname" class="form-control" type="text" placeholder="Enter new Username" formControlName="uname" name="uname">
+            <div style="color:red ;" *ngIf="uname?.touched && uname?.errors?.['minlength']">User must be 5 characters or more.</div>
+            <div style="color:red ;" *ngIf="uname?.touched && uname?.errors?.['required']">Required field.</div>
+
         </div>
-        <div class="form-group col-10">
+        <div class="form-group col-6">
             <label class="form-label">Password</label>
             <br>
-            <input [(ngModel)]="user.password" class="form-control" type="text" placeholder="Enter password" formControlName="uname" name="password">
+            <input [(ngModel)]="user.password" class="form-control" type="text" placeholder="Enter password" formControlName="password" name="password">
+            <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['pattern']">Password must be 5 characters or more.</div>
+            <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['required']">Required field.</div>
         </div>
         <button class="btn btn-primary">Submit</button>
         <button class="btn btn-secondary" (click)="createUser()">Create User</button>

@@ -1,0 +1,17 @@
+<div class="container col-md-4">
+    <form (ngSubmit)="createUser()">
+        <div class="form-group col-10">
+            <label class="form-label">Username</label>
+            <br>
+            <input [(ngModel)]="user.uname" class="form-control" type="text" placeholder="Enter new Username"name="uname">
+        </div>
+        <div class="form-group col-10">
+            <label class="form-label">Password</label>
+            <br>
+            <input [(ngModel)]="user.password" class="form-control" type="text" placeholder="Enter password" name="password">
+        </div>
+        <button class="btn btn-primary">Submit</button>
+        
+    </form>
+    
+</div>

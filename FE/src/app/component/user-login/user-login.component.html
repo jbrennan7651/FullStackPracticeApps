@@ -1,0 +1,27 @@
+<div class="container">
+<div class="logo">
+    <img src="../../images/hulu.png" alt="Hulu logo">
+</div>
+<div class="bottom-page">
+<div class="login">
+    <h2>Please Log In</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div  class="form-control">
+        User Name 
+        <input type="text" name="username" formControlName="uname">
+        <div *ngIf="uname && uname?.errors?.['pattern'] && uname?.touched">Invalid Characters</div>
+        </div>
+        <div  class="form-control">
+        Password 
+        <input type="text" name="password" formControlName="pword">
+        <div *ngIf="pword && pword?.invalid && pword?.touched">Required Field</div>
+        </div>
+        <button class="btn">Login</button>
+    </form>
+
+    <p class="text">Don't have an account? <a routerLink="create"> Sign In</a></p>
+
+</div>
+</div>
+</div>
+

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/cc?family=Muli&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+.logo{
+    background-color: white;
+    padding: 2%;
+}
+
+.bottom-page{
+    background-color: rgb(247, 247, 247);
+    padding: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.login{
+    background-color: white;
+    border: 5px black;
+    border-radius: 5px;
+    padding: 20px 40px;
+}
+
+.login h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login a {
+    text-decoration: none;
+    color: rgb(19, 218, 19);
+}
+
+.form-control{
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+}
+
+.form-control input{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px black solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+}
+
+.form-control input:focus, .form-control input:valid{
+    outline: 0;
+}
+
+.btn{
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+
+
+}
+
+.btn:focus{
+    outline: 0;
+}
+
+.btn:active{
+    transform: scale(0.98);
+}
+
+.text{
+    margin-top: 30px;
+}

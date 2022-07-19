@@ -1,0 +1,15 @@
+<div class="bottom-page">
+    <div class="create">
+    <h2>Let's Create an Account! </h2>
+    <div class="form-control">
+         ID: <input type="text"[(ngModel)]="user.uid" > 
+    </div>
+    <div class="form-control"> 
+        Username: <input type="text"[(ngModel)]="user.uname" > 
+    </div>
+    <div class="form-control"> 
+        Password: <input type="password"[(ngModel)]="user.pword" > 
+    </div>
+    <div><button type="button" (click)="processCreate()" class="btn">Add</button></div>
+</div>
+</div>

@@ -1,14 +1,18 @@
 <div class="container col-md-4">
-    <form (ngSubmit)="createUser()">
+    <form [formGroup]="loginForm" (ngSubmit)="createUser()">
         <div class="form-group col-10">
             <label class="form-label">Username</label>
             <br>
-            <input [(ngModel)]="user.uname" class="form-control" type="text" placeholder="Enter new Username"name="uname">
+            <input [(ngModel)]="user.uname" class="form-control" type="text" placeholder="Enter new Username"name="uname" formControlName="uname">
+            <div style="color:red ;" *ngIf="uname?.touched && uname?.errors?.['minlength']">User must be 5 characters or more.</div>
+            <div style="color:red ;" *ngIf="uname?.touched && uname?.errors?.['required']">Required field.</div>
         </div>
         <div class="form-group col-10">
             <label class="form-label">Password</label>
             <br>
-            <input [(ngModel)]="user.password" class="form-control" type="text" placeholder="Enter password" name="password">
+            <input [(ngModel)]="user.password" class="form-control" type="text" placeholder="Enter password" name="password" formControlName="password">
+            <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['pattern']">Password must contain 1 number, a lower an upper case number and at least one of these characters:(!@#$%&).</div>
+            <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['required']">Required field.</div>
         </div>
         <button class="btn btn-primary">Submit</button>
         

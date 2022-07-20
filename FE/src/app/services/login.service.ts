@@ -37,4 +37,9 @@ export class LoginService {
     this.loadUser(user);
     return this.httpClient.put(`${this.baseUrl}/${uname}`, user)
   }
+
+  deleteUser(uname: string){
+    console.log(uname);
+    return this.httpClient.delete(`${this.baseUrl}/${uname}`)
+  }
 }

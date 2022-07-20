@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class MainGuiComponent implements OnInit {
 
   user : User = new User;
+  
   currentName !: any;
   currentPass !: any;
   constructor(private loginService : LoginService,
@@ -21,6 +22,7 @@ export class MainGuiComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentName = this.activeRouter.snapshot.paramMap.get('uname');
+    this.user.uname = this.currentName;
   }
 
   onSubmit(uname : string, user: User){
@@ -32,8 +34,17 @@ export class MainGuiComponent implements OnInit {
       })
   }
 
+  deleteUser(uname : string){
+    this.loginService.deleteUser(uname).subscribe(data => {
+      this.user.uname = uname;
+      this.router.navigate(['/login'])
+    })
+    
+  }
+
   public isMenuCollapsed = true;
-  public isCollapsed = true;
+  public updateCollapsed = true;
+  public deleteCollapsed = true;
 
 
 }

@@ -36,7 +36,10 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
     this.loginService.loginUser(this.user).subscribe(data =>{
       alert("Login Successful!")
-      this.router.navigate([`/main/${this.user.uname}`])
+      if(this.user.uname === "admin"){
+        this.router.navigate(['/usersList'])
+      }
+      else {this.router.navigate([`/main/${this.user.uname}`])}
     },error => alert("Please enter correct information or Create a new User"))
   }
 

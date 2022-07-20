@@ -1,3 +1,4 @@
+
 <div class="container col-md-6">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group col-6">
@@ -16,7 +17,7 @@
             <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['required']">Required field.</div>
         </div>
         <button class="btn btn-primary">Submit</button>
-        <button class="btn btn-secondary" (click)="createUser()">Create User</button>
+        <button class="btn btn-success" (click)="createUser()">Create User</button>
     </form>
     
 </div>

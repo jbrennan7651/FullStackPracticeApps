@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
@@ -32,6 +33,7 @@ export class MainGuiComponent implements OnInit {
         this.currentName = user.uname;
         console.log(user);
       })
+      this.user.password = '';
   }
 
   deleteUser(uname : string){

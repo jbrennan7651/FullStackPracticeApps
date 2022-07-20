@@ -32,6 +32,10 @@ export class LoginService {
     return this.httpClient.get(`${this.baseUrl}/${user.uname}`)
   }
 
+  loadAllUsers(){
+    return this.httpClient.get(`${this.baseUrl}`)
+  }
+
   updateUser(uname : string, user : User){
     console.log(user);
     this.loadUser(user);

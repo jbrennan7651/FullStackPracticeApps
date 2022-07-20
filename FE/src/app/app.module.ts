@@ -10,6 +10,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { MainGuiComponent } from './components/main-gui/main-gui.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     CreateUserComponent,
     MainGuiComponent,
-    NavbarComponent
+    NavbarComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,

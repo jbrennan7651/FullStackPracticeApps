@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -6,12 +5,11 @@ import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.scss']
+  selector: 'app-admin-create',
+  templateUrl: './admin-create.component.html',
+  styleUrls: ['./admin-create.component.scss']
 })
-export class CreateUserComponent implements OnInit {
-
+export class AdminCreateComponent implements OnInit {
   loginForm = new FormGroup({
     uname: new FormControl('', [Validators.required, Validators.minLength(5)]),
     password: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&]).{6,20}$")])
@@ -36,9 +34,12 @@ export class CreateUserComponent implements OnInit {
   createUser(){
     this.loginService.createUser(this.user).subscribe(data=>{
       alert("Successfully Created New User")
-      this.router.navigate(['login'])
+      this.refresh();
     }, error => alert("User already Exists")
     );
   }
 
+  refresh() : void{
+    window.location.reload();
+  }
 }

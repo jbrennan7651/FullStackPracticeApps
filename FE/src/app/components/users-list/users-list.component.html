@@ -1,5 +1,12 @@
 <app-navbar></app-navbar>
-<h3>User List</h3>
+<div class="container">
+    <div class="row">
+        <h3 class="col-md-6">User List</h3>
+        <button class="btn btn-primary col-md-4" (click)="addClick()">Add New User</button>    
+    </div>
+</div>
+
+
 <table class="table table-dark">
     <thead>
         <tr><th>Username</th><th>Password</th><th>Admin</th></tr>
@@ -16,7 +23,7 @@
     </tbody>
 </table>
 
-<div *ngIf="toggle" >
+<div class="update-user" *ngIf="updateToggle" >
     <form class="container col-md-6">
         <div class="form-group">
             <label class="form-label">UserName</label>
@@ -29,4 +36,7 @@
             <input  [(ngModel)]="user.password" type="text" name="password">
         </div>
     </form>
+</div>
+<div *ngIf="addToggle">
+    <app-admin-create></app-admin-create>
 </div>

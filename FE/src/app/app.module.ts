@@ -11,6 +11,7 @@ import { MainGuiComponent } from './components/main-gui/main-gui.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { AdminCreateComponent } from './components/admin-create/admin-create.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { UsersListComponent } from './components/users-list/users-list.component
     CreateUserComponent,
     MainGuiComponent,
     NavbarComponent,
-    UsersListComponent
+    UsersListComponent,
+    AdminCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -9,15 +11,19 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class UsersListComponent implements OnInit {
 
-  constructor(private loginService : LoginService) { }
+  constructor(private loginService : LoginService,
+    private router: Router) { }
 
   users : User[] = [];
   user !: User;
-  toggle = false;
+  updateToggle = false;
+  addToggle = false;
   currentName !: string;
   ngOnInit(): void {
     this.getUsers();
   }
+
+ 
 
   getUsers(){
     this.loginService.loadAllUsers().subscribe((data : any) => {
@@ -34,7 +40,6 @@ export class UsersListComponent implements OnInit {
   }
 
   onSubmit(uname : string, user: User){
-
   }
 
   refresh() : void{
@@ -43,13 +48,10 @@ export class UsersListComponent implements OnInit {
 
   click(user : User){
     this.user = user
-    this.toggle = true;
+    this.updateToggle = true;
   }
-
-  public isMenuCollapsed = true;
-  public updateCollapsed = true;
-  public deleteCollapsed = true;
-
-
+  addClick(){
+    this.addToggle = true;
+  }
 
 }

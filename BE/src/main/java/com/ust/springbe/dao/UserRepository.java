@@ -28,7 +28,7 @@ public interface UserRepository{
     // Optional<User> findUserById(int id);
     //User Info Methods
 
-    int createUserInfo(UserInfo userInfo);
+    int createUserInfo(String uname);
     int deleteUserInfo(String uname);
     UserInfo findUserInfoByName(String uname);
     int updateUserInfo(String uname, UserInfo userInfo);

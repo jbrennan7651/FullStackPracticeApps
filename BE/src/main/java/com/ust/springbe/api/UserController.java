@@ -31,6 +31,7 @@ public class UserController {
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> loginUser(@RequestBody User userData){
         System.out.println(userData);
+        int userInfo = userService.createUserInfo(userData.getUname());
         User user = userService.findUserByName(userData.getUname());
         if(user.getPassword().equals(userData.getPassword())){
             return ResponseEntity.ok(user);
@@ -69,8 +70,8 @@ public class UserController {
     //
 
     @PostMapping(value = "/{uname}/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    int createUserInfo(@RequestBody UserInfo userInfo){
-        return userService.createUserInfo(userInfo);
+    int createUserInfo(@RequestBody String uname){
+        return userService.createUserInfo(uname);
     }
 
     @DeleteMapping(value = "/{uname}/info")

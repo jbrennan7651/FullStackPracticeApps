@@ -24,17 +24,18 @@ public class JdbcRepository implements UserRepository{
 
     @Override
     public int createUser(User user) {
-        String sql = "INSERT INTO USERS(UNAME, PASSWORD) VALUES(?,?)";
+        String sql = "INSERT INTO USERS(UNAME, PASSWORD) VALUES(?,?);";
         return jdbcTemplate.update(sql,
                 new Object[]{user.getUname(), user.getPassword()});
     }
 
     
     @Override
-    public int createUserInfo(UserInfo userInfo) {
-        String sql = "INSERT INTO USERINFO(UNAME, EMAIL) VALUES(?,?)";
+    public int createUserInfo(String uname) {
+        UserInfo userInfo = new UserInfo();
+        String sql = "INSERT INTO USERINFO(UNAME, EMAIL, PHONE, STREET, CITY, COUNTRY) VALUES(?,?,?,?,?,?);";
         return jdbcTemplate.update(sql,
-                new Object[]{userInfo.getUname(), userInfo.getEmail()});
+                new Object[]{uname, userInfo.getEmail(), userInfo.getPhone(), userInfo.getStreet(), userInfo.getCity(), userInfo.getCountry()});
     }
 
     //Delete Methods
@@ -65,7 +66,7 @@ public class JdbcRepository implements UserRepository{
     public User findUserByName(String uname) {
         User user = null;
         try {
-            String sql = "SELECT * FROM USERS, USERINFO  WHERE users.uname = userinfo.uname AND UNAME=?";
+            String sql = "select * from users, userinfo where users.uname=userinfo.uname AND userinfo.uname=?";
             user = jdbcTemplate.queryForObject(sql,
                     BeanPropertyRowMapper.newInstance(User.class), uname);
             return user;
@@ -101,10 +102,10 @@ public class JdbcRepository implements UserRepository{
 
     @Override
     public int updateUserInfo(String uname, UserInfo userInfo) {
-        String sql = "UPDATE USERINFO SET UNAME=?, EMAIL=? WHERE UNAME=?";
+        String sql = "UPDATE USERINFO SET UNAME=?, EMAIL=?, PHONE=?, STREET=?, CITY=?, COUNTRY=? WHERE UNAME=?";
         
         return jdbcTemplate.update(sql,
-         userInfo.getUname(), userInfo.getEmail(), uname);
+         userInfo.getUname(), userInfo.getEmail(), userInfo.getPhone(), userInfo.getStreet(), userInfo.getCity(), userInfo.getCountry(), uname);
     }
 
 

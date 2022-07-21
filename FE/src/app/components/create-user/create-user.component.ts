@@ -34,6 +34,7 @@ export class CreateUserComponent implements OnInit {
 
   
   createUser(){
+    this.loginService.createUserInfo
     this.loginService.createUser(this.user).subscribe(data=>{
       alert("Successfully Created New User")
       this.router.navigate(['login'])

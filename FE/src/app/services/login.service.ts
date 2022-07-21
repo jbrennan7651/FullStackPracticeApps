@@ -17,14 +17,18 @@ export class LoginService {
   loginUser(user :User): Observable<Object>{
     console.log(user);
     this.loadUser(user);
-
     return this.httpClient.post(`${this.baseUrl}/login`, user)
-    
   }
+
 
   createUser(user : User){
     console.log(user);
     return this.httpClient.post(`${this.baseUrl}/create`, user)
+  }
+
+  createUserInfo(uname : string){
+    console.log(uname);
+    return this.httpClient.post(`${this.baseUrl}/${uname}/create`, uname)
   }
 
 

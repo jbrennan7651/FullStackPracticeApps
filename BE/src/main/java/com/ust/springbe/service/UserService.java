@@ -47,8 +47,8 @@ public class UserService {
 
     //User Info Methods
 
-    public int createUserInfo(UserInfo userInfo){
-        return userRepository.createUserInfo(userInfo);
+    public int createUserInfo(String uname){
+        return userRepository.createUserInfo(uname);
     }
     public int deleteUserInfo(String uname){
         return userRepository.deleteUserInfo(uname);

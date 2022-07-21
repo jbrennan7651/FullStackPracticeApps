@@ -14,6 +14,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { AdminCreateComponent } from './components/admin-create/admin-create.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { AdminCreateComponent } from './components/admin-create/admin-create.com
     MainGuiComponent,
     NavbarComponent,
     UsersListComponent,
-    AdminCreateComponent
+    AdminCreateComponent,
+   
   ],
   imports: [
     BrowserModule,

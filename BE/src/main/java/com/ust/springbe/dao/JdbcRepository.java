@@ -32,7 +32,7 @@ public class JdbcRepository implements UserRepository{
     
     @Override
     public int createUserInfo(UserInfo userInfo) {
-        String sql = "INSERT INTO USERINFO VALUES(?,?)";
+        String sql = "INSERT INTO USERINFO(UNAME, EMAIL) VALUES(?,?)";
         return jdbcTemplate.update(sql,
                 new Object[]{userInfo.getUname(), userInfo.getEmail()});
     }
@@ -65,7 +65,7 @@ public class JdbcRepository implements UserRepository{
     public User findUserByName(String uname) {
         User user = null;
         try {
-            String sql = "SELECT * FROM USERS WHERE UNAME=?";
+            String sql = "SELECT * FROM USERS, USERINFO  WHERE users.uname = userinfo.uname AND UNAME=?";
             user = jdbcTemplate.queryForObject(sql,
                     BeanPropertyRowMapper.newInstance(User.class), uname);
             return user;

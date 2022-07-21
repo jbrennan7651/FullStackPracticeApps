@@ -48,11 +48,13 @@ public class UserController {
 
     @DeleteMapping(value = "/{uname}")
     int deleteMovie(@PathVariable("uname")String uname){
+        deleteUserInfo(uname);
         return userService.deleteUser(uname);
     }
 
     @GetMapping(value = "/{uname}")
     User queryUserByName(@PathVariable("uname") String uname){
+        queryUserInfoByName(uname);
         return userService.findUserByName(uname);
     }
     
@@ -71,18 +73,18 @@ public class UserController {
         return userService.createUserInfo(userInfo);
     }
 
-    // @DeleteMapping(value = "/{uname}")
-    // int deleteUserInfo(@PathVariable("uname")String uname){
-    //     return userService.deleteUser(uname);
-    // }
+    @DeleteMapping(value = "/{uname}/info")
+    int deleteUserInfo(@PathVariable("uname")String uname){
+        return userService.deleteUser(uname);
+    }
 
     @GetMapping(value = "/{uname}/info")
     UserInfo queryUserInfoByName(@PathVariable("uname") String uname){
         return userService.findUserInfoByName(uname);
     }
 
-    // @PutMapping(value = "/{uname}")
-    // int updateUserInfo(@PathVariable("uname")String uname, @RequestBody UserInfo userInfo){
-    //     return userService.updateUserInfo(uname, userInfo);
-    // }
+    @PutMapping(value = "/{uname}/info")
+    int updateUserInfo(@PathVariable("uname")String uname, @RequestBody UserInfo userInfo){
+        return userService.updateUserInfo(uname, userInfo);
+    }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { UserInfo } from '../models/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,11 @@ export class LoginService {
 
   loadUser(user : User){
     console.log(user.uname, user.password);
+    this.loadUserInfo(user.uname);
     return this.httpClient.get(`${this.baseUrl}/${user.uname}`)
+  }
+  loadUserInfo(uname : string){
+    return this.httpClient.get(`${this.baseUrl}/${uname}/info`)
   }
 
   loadAllUsers(){
@@ -40,6 +45,12 @@ export class LoginService {
     console.log(user);
     this.loadUser(user);
     return this.httpClient.put(`${this.baseUrl}/${uname}`, user)
+  }
+
+  updateUserInfo(uname : string, userInfo : UserInfo){
+    console.log(userInfo);
+    this.loadUserInfo(userInfo.uname);
+    return this.httpClient.put(`${this.baseUrl}/${uname}/info`, userInfo)
   }
 
   deleteUser(uname: string){

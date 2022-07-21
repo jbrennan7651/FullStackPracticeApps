@@ -6,6 +6,7 @@ public class UserInfo {
     //
     private String uname;
     private String email;
+    
 
     //
     //Constructors

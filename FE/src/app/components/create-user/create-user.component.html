@@ -14,6 +14,8 @@
             <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['pattern']">Password must contain 1 number, a lower an upper case number and at least one of these characters:(!@#$%&).</div>
             <div style="color:red ;" *ngIf="password?.touched && password?.errors?.['required']">Required field.</div>
         </div>
-        <button class="btn btn-primary">Submit</button>
-    </form>   
+        <button *ngIf="loginForm.valid" class="btn btn-primary">Submit</button>
+        
+    </form>
+    
 </div>

@@ -20,7 +20,7 @@ public class JdbcRepository implements UserRepository{
     private JdbcTemplate jdbcTemplate;
     private static List<User> users = new ArrayList<>();
 
-    //Create Methods
+    //Post Methods
 
     @Override
     public int createUser(User user) {
@@ -60,6 +60,12 @@ public class JdbcRepository implements UserRepository{
          return jdbcTemplate.query(sql,
                     BeanPropertyRowMapper.newInstance(User.class));
         
+    }
+    @Override
+    public List<UserInfo> queryUsersInfo() {
+        String sql = "SELECT * FROM USERINFO";
+         return jdbcTemplate.query(sql,
+                    BeanPropertyRowMapper.newInstance(UserInfo.class));
     }
 
     @Override
@@ -107,6 +113,9 @@ public class JdbcRepository implements UserRepository{
         return jdbcTemplate.update(sql,
          userInfo.getUname(), userInfo.getEmail(), userInfo.getPhone(), userInfo.getStreet(), userInfo.getCity(), userInfo.getCountry(), uname);
     }
+
+
+   
 
 
   

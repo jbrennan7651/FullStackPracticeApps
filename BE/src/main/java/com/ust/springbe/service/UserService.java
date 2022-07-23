@@ -26,6 +26,9 @@ public class UserService {
     public List<User> findUsers() {
         return userRepository.queryUsers();
     }
+    public List<UserInfo> findUsersInfo() {
+        return userRepository.queryUsersInfo();
+    }
 
     //User Methods
 
@@ -61,6 +64,8 @@ public class UserService {
     public int updateUserInfo(String uname,UserInfo userInfo) {
         return userRepository.updateUserInfo(uname, userInfo);
     }
+
+    
 
    
 

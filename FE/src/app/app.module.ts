@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { AdminCreateComponent } from './components/admin-create/admin-create.component';
+import { UserInfoListComponent } from './components/user-info-list/user-info-list.component';
 
 
 
@@ -24,6 +25,7 @@ import { AdminCreateComponent } from './components/admin-create/admin-create.com
     NavbarComponent,
     UsersListComponent,
     AdminCreateComponent,
+    UserInfoListComponent,
    
   ],
   imports: [

@@ -33,6 +33,7 @@ public interface UserRepository{
     UserInfo findUserInfoByName(String uname);
     int updateUserInfo(String uname, UserInfo userInfo);
     List<User> queryUsers();
+    List<UserInfo> queryUsersInfo();
 
 
 

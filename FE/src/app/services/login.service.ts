@@ -31,6 +31,12 @@ export class LoginService {
     return this.httpClient.post(`${this.baseUrl}/${uname}/create`, uname)
   }
 
+  loadUserByName(uname : string){
+    console.log(uname);
+    this.loadUserInfo(uname);
+    return this.httpClient.get(`${this.baseUrl}/${uname}`)
+  }
+
 
   loadUser(user : User){
     console.log(user.uname, user.password);
@@ -43,6 +49,10 @@ export class LoginService {
 
   loadAllUsers(){
     return this.httpClient.get(`${this.baseUrl}`)
+  }
+
+  loadAllUsersInfo(){
+    return this.httpClient.get(`${this.baseUrl}/info`)
   }
 
   updateUser(uname : string, user : User){

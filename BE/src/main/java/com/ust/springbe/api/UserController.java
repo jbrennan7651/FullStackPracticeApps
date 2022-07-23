@@ -23,69 +23,69 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping(value = "")
-    List<User> queryUsers(){
-        return userService.findUsers();
-    }
-
+  
+    //LOGIN Authorization Method
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> loginUser(@RequestBody User userData){
         System.out.println(userData);
-        int userInfo = userService.createUserInfo(userData.getUname());
         User user = userService.findUserByName(userData.getUname());
         if(user.getPassword().equals(userData.getPassword())){
             return ResponseEntity.ok(user);
         }
         return (ResponseEntity<?>) ResponseEntity.internalServerError();
     }
-
-    //
-    //User Methods
-    //
-    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    int createUser(@RequestBody User user){
-        return userService.createUser(user);
+    //GET Methods
+    @GetMapping(value = "")
+    List<User> queryUsers(){
+        return userService.findUsers();
     }
-
-    @DeleteMapping(value = "/{uname}")
-    int deleteMovie(@PathVariable("uname")String uname){
-        deleteUserInfo(uname);
-        return userService.deleteUser(uname);
-    }
-
     @GetMapping(value = "/{uname}")
     User queryUserByName(@PathVariable("uname") String uname){
         queryUserInfoByName(uname);
         return userService.findUserByName(uname);
     }
-    
-
-    @PutMapping(value = "/{uname}")
-    int updateUser(@PathVariable("uname")String uname, @RequestBody User user){
-        return userService.updateUser(uname, user);
+    @GetMapping(value = "/info")
+    List<UserInfo> queryUsersInfo(){
+        return userService.findUsersInfo();
     }
-    
-    //
-    //UserInfo Methods
-    //
+    @GetMapping(value = "/{uname}/info")
+    UserInfo queryUserInfoByName(@PathVariable("uname") String uname){
+        return userService.findUserInfoByName(uname);
+    }
+
+    //POST Methods
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    int createUser(@RequestBody User user){
+        int userInfo = userService.createUserInfo(user.getUname());
+        return userService.createUser(user);
+    }
 
     @PostMapping(value = "/{uname}/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     int createUserInfo(@RequestBody String uname){
         return userService.createUserInfo(uname);
     }
 
-    @DeleteMapping(value = "/{uname}/info")
-    int deleteUserInfo(@PathVariable("uname")String uname){
-        return userService.deleteUser(uname);
-    }
-
-    @GetMapping(value = "/{uname}/info")
-    UserInfo queryUserInfoByName(@PathVariable("uname") String uname){
-        return userService.findUserInfoByName(uname);
+    //PUT Methods
+    @PutMapping(value = "/{uname}")
+    int updateUser(@PathVariable("uname")String uname, @RequestBody User user){
+        return userService.updateUser(uname, user);
     }
 
     @PutMapping(value = "/{uname}/info")
     int updateUserInfo(@PathVariable("uname")String uname, @RequestBody UserInfo userInfo){
         return userService.updateUserInfo(uname, userInfo);
     }
+    
+    //DELETE Methods
+    @DeleteMapping(value = "/{uname}")
+    int deleteMovie(@PathVariable("uname")String uname){
+        int userInfo = this.userService.deleteUserInfo(uname);
+        return userService.deleteUser(uname);
+    }
+
+    @DeleteMapping(value = "/{uname}/info")
+    int deleteUserInfo(@PathVariable("uname")String uname){
+        return userService.deleteUserInfo(uname);
+    }
+ 
 }

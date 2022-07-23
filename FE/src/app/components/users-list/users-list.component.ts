@@ -18,13 +18,19 @@ export class UsersListComponent implements OnInit {
   user !: User;
   updateToggle = false;
   addToggle = false;
+  passwordToggle=  false;
   currentName !: string;
+
   ngOnInit(): void {
     this.getUsers();
   }
 
- 
-
+  getClickedUser(uname: string){
+    this.loginService.loadUserByName(uname).subscribe((data : any) =>{
+      this.user = data;
+    })
+  }
+  
   getUsers(){
     this.loginService.loadAllUsers().subscribe((data : any) => {
       this.users = data;
@@ -46,8 +52,11 @@ export class UsersListComponent implements OnInit {
     window.location.reload();
   }
 
-  click(user : User){
-    this.user = user
+  click(uname : string){
+    
+    this.loginService.loadUserByName(uname).subscribe((data : any)=>{
+      this.user = data
+    })
     this.updateToggle = true;
   }
   addClick(){

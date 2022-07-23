@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { MainGuiComponent } from './components/main-gui/main-gui.component';
+import { UserInfoListComponent } from './components/user-info-list/user-info-list.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { LoginComponent } from './login/login.component';
 
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: 'create', component: CreateUserComponent},
   {path: 'main/:uname', component: MainGuiComponent},
   {path: 'usersList', redirectTo: 'usersList'},
-  {path: 'usersList', component: UsersListComponent}
+  {path: 'usersList', component: UsersListComponent},
+  {path: 'usersInfoList', component: UserInfoListComponent}
 ];
 
 @NgModule({

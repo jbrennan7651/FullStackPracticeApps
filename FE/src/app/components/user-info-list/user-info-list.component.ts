@@ -27,6 +27,7 @@ export class UserInfoListComponent implements OnInit {
   currentName !: string;
   addToggle = false;
   updateToggle = false;
+  passwordToggle = false;
   constructor(private loginService : LoginService) { }
 
   ngOnInit(): void {
@@ -48,18 +49,36 @@ export class UserInfoListComponent implements OnInit {
     })
   }
 
-  updateClick(uname : string){
-    this.updateToggle = true;
+  passwordClick(uname : string){
+    this.passwordToggle = true;
     this.loginService.loadUserByName(uname).subscribe((data : any) =>{
       this.user = data;
       console.log("data is " + this.user)
     })
     this.addToggle = false;
-    
+    this.updateToggle = false;
+  }
+
+  updateClick(uname : string){
+    this.updateToggle = true;
+    this.loginService.loadUserInfo(uname).subscribe((data : any) =>{
+      this.userInfo = data;
+      console.log("data is " + this.user)
+    })
+    this.addToggle = false;
+    this.passwordToggle = false;
+  }
+
+  updateUserInfo(uname : string, userInfo : UserInfo){
+    this.loginService.updateUserInfo(uname, this.userInfo).subscribe((data : any) =>{
+      this.userInfo = data;
+      console.log(data);
+    })
+    this.refresh();
   }
 
   closePassword(){
-    this.updateToggle = false
+    this.passwordToggle = false
   }
 
   addClick(){
@@ -71,6 +90,7 @@ export class UserInfoListComponent implements OnInit {
       this.addToggle = true;
     }
     this.updateToggle = false;
+    this.passwordToggle = false;
   }
 
   click(uname : string){
@@ -79,6 +99,8 @@ export class UserInfoListComponent implements OnInit {
       this.user = data
     })
     this.updateToggle = true;
+    this.passwordToggle = false;
+
   }
   deleteUser(uname : string){
     this.loginService.deleteUser(uname).subscribe((data : any)=> {

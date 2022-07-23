@@ -19,9 +19,10 @@
             <td>{{ userInfo.city }}</td>
             <td>{{ userInfo.country }}</td>
             <td>
-                <button class="btn btn-primary" (click)="updateClick(userInfo.uname)">View Password</button> /
-                <button type="button" class="btn btn-success" (click)="click(user.uname)">Update</button> /
-                <button type="button" class="btn btn-danger" (click)="deleteUser(user.uname)">Delete</button>
+                <button class="btn btn-primary" (click)="passwordClick(userInfo.uname)">View Password</button> /
+                <button class="btn btn-success" (click)="updateClick(userInfo.uname)">Update Info</button> /
+                <button class="btn btn-danger" (click)="deleteUser(userInfo.uname)">Delete User</button>
+                
             </td>
         </tr>
     </tbody>
@@ -30,8 +31,8 @@
 <!-- <app-users-list *ngIf="updateToggle"></app-users-list> -->
 
 
-<div *ngIf="updateToggle">
-    <table class="table table-dark">
+
+    <table *ngIf="passwordToggle" class="table table-dark col-md-6">
         <thead>
             <tr><th>Username</th><th>Password</th><th>Admin</th></tr>
         </thead>
@@ -45,10 +46,46 @@
             </tr>
         </tbody>
     </table>
-</div>
+
 
 <div *ngIf="addToggle">
     <app-admin-create></app-admin-create>
+</div>
+
+<div class="container col-md-6" *ngIf="updateToggle">
+    <form (ngSubmit)="updateUserInfo(userInfo.uname, userInfo)">
+        <div class="form-group col-10">
+            <label class="form-label">Username</label>
+            <br>
+            <input [(ngModel)]="userInfo.uname" class="form-control" type="text" placeholder="Enter Username"name="uname">
+        </div>
+        <div class="form-group col-10">
+            <label class="form-label">Email</label>
+            <br>
+            <input [(ngModel)]="userInfo.email" class="form-control" type="text" placeholder="Enter email address" name="email">
+        </div>
+         <div class="form-group col-10">
+            <label class="form-label">Phone</label>
+            <br>
+            <input [(ngModel)]="userInfo.phone" class="form-control" type="text" placeholder="Enter phone number" name="phone">
+        </div>
+        <div class="form-group col-10">
+            <label class="form-label">Street Address</label>
+            <br>
+            <input [(ngModel)]="userInfo.street" class="form-control" type="text" placeholder="Enter street address" name="street">
+        </div>
+        <div class="form-group col-10">
+            <label class="form-label">City</label>
+            <br>
+            <input [(ngModel)]="userInfo.city" class="form-control" type="text" placeholder="Enter city" name="city">
+        </div>
+        <div class="form-group col-10">
+            <label class="form-label">Country</label>
+            <br>
+            <input [(ngModel)]="userInfo.country" class="form-control" type="text" placeholder="Enter country" name="country">
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form> 
 </div>
     
 

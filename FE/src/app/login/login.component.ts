@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
                                     Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&]).{6,20}$")])
   });
 
+  loggedIn = false;
   user: User = new User;
   constructor(private loginService : LoginService,
     private router : Router) { }
@@ -39,7 +40,8 @@ export class LoginComponent implements OnInit {
       if(this.user.uname === "admin"){
         this.router.navigate(['/usersInfoList'])
       }
-      else {this.router.navigate([`/main/${this.user.uname}`])}
+      else {this.router.navigate([`/home/${this.user.uname}`])}
+      return this.loggedIn = true;
     },error => alert("Please enter correct information or Create a new User"))
   }
 

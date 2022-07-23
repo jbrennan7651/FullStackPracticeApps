@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 
+
+//
+//DEPRECIATED
+//
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',

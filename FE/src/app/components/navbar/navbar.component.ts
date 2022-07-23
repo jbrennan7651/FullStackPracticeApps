@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
 
   currentName !: any;
   currentPass !: any;
+  signedIn = false;
   constructor(private loginService : LoginService,
     private activeRouter : ActivatedRoute,
     private router: Router) { }
@@ -18,6 +19,24 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentName = this.activeRouter.snapshot.paramMap.get('uname');
+    this.loggedIn();
+    console.log(this.currentName)
+  }
+
+  loggedIn(){
+    if (this.currentName !== null){
+      this.signedIn = true;
+    }
+    else{
+      this.signedIn = false;
+    }
+  }
+
+  specialRouting(){
+    this.router.navigate([`home/${this.currentName}`])
+  }
+  cartRouting(){
+    this.router.navigate([`home/${this.currentName}/cart`])
   }
 
   public isMenuCollapsed = true;

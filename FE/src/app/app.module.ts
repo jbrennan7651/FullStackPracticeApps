@@ -13,6 +13,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { AdminCreateComponent } from './components/admin-create/admin-create.component';
 import { UserInfoListComponent } from './components/user-info-list/user-info-list.component';
+import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/home/cart/cart.component';
 
 
 
@@ -26,6 +28,8 @@ import { UserInfoListComponent } from './components/user-info-list/user-info-lis
     UsersListComponent,
     AdminCreateComponent,
     UserInfoListComponent,
+    HomeComponent,
+    CartComponent,
    
   ],
   imports: [

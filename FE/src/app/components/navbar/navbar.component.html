@@ -11,8 +11,20 @@
       <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="''" (click)="isMenuCollapsed = true">Signout</a>
+            <a class="nav-link" *ngIf="signedIn" (click)="specialRouting()">Home</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="signedIn" [routerLink]="'main'" (click)="isMenuCollapsed = true">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="!signedIn" [routerLink]="'/cart'" (click)="isMenuCollapsed = true">Cart</a>
+            <a class="nav-link" *ngIf="signedIn" (click)="cartRouting()">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="!signedIn" [routerLink]="'login'" (click)="isMenuCollapsed = true">Signin</a>
+            <a class="nav-link" *ngIf="signedIn" [routerLink]="''" (click)="signedIn = false">Signout</a>
+          </li>
+          
         </ul>
       </div>
     </div>
